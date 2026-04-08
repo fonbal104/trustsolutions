@@ -278,9 +278,10 @@
 
     .section-desc {
       font-size: 0.9rem;
-      line-height: 2;
       color: var(--mid);
       max-width: 540px;
+      text-wrap: balance;
+      line-height: 1.9;
     }
 
     /* ── SERVICES ── */
@@ -754,5 +755,9 @@
         letter-spacing: 0.2em;
         color: var(--ink);
         }
+
+        .nowrap {
+        white-space: nowrap;
+       }
 
         
