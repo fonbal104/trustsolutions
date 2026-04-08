@@ -35,7 +35,7 @@ function Footer() {
           〒100-0001 東京都千代田区千代田1-1-1<br />
       TEL: 03-1234-5678 ／ EMAIL: info@trust-corp.co.jp
         </div>
-        <div>© 2026 株式会社Trust</div>
+        <div>© {new Date().getFullYear()} 株式会社Trust</div>
       </div>
     </footer>
   );
