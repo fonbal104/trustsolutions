@@ -152,29 +152,89 @@
 
     .hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 
-    .btn-primary {
+    /* .btn-primary {
       display: inline-block;
       background: var(--navy);
       color: var(--white);
+      border: none;
       padding: 16px 40px;
       font-size: 0.82rem;
       letter-spacing: 0.18em;
       text-decoration: none;
       position: relative;
       overflow: hidden;
-      transition: color 0.35s;
+      z-index: 1;
+      transition: color 0.35s; 
+      cursor: pointer;
+    } */
+     .btn-primary {
+      display: inline-block;
+      position: relative;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 16px 40px;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      cursor: pointer;
+      overflow: hidden;
     }
 
-    .btn-primary::before {
+    /* .btn-primary:hover {
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+    } */
+
+    /* ensure text color stays */
+    .btn-primary:hover {
+      color: var(--white);
+      border: none;
+    }
+
+    /* .btn-primary::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute; 
+      inset: 0;
       background: var(--gold);
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s ease;
+      z-index: 0;
+      opacity: 0;
+    } */
+
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateX(-100%); /* start off-screen */
+      transition: transform 0.4s ease;
+      z-index: 1; /* BELOW text */
     }
 
-    .btn-primary:hover::before { transform: scaleX(1); }
-    .btn-primary span { position: relative; z-index: 1; }
+    /* HOVER animation */
+    .btn-primary:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn-primary:hover::before { 
+      transform: scaleX(1); 
+      color: inherit;
+      opacity: 1;
+    }
+    /* .btn-primary span { 
+      position: relative; 
+      z-index: 2; 
+    } */
+
+
+     /* TEXT stays above */
+    .btn-primary span {
+      position: relative;
+      z-index: 2;
+    }
 
     .btn-outline {
       display: inline-block;
@@ -759,5 +819,51 @@
         .nowrap {
         white-space: nowrap;
        }
+
+       /* Modal Contact Form */
+       .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      }
+
+      .modal {
+        background: white;
+        padding: 40px;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        border: none;
+        background: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 12px;
+        border: 1px solid #ddd;
+      }
 
         
